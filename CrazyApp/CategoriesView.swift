@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SecondVC: UIViewController {
+class CategoriesView: UIViewController {
     //MARK: - UI Components
     private let mainLabel: UILabel = {
         let label = UILabel()
@@ -59,8 +59,8 @@ class SecondVC: UIViewController {
 
 }
 
-
-extension SecondVC: UITableViewDelegate, UITableViewDataSource {
+// MARK: - TableView delegate and datasource functions
+extension CategoriesView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         animals.count
     }
@@ -76,8 +76,11 @@ extension SecondVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let thidVC = ThirdVC(selectedCategory: indexPath.description)
-        navigationController?.pushViewController(thidVC, animated: true)
+        let selectedAnimal = animals[indexPath.row]
+        let thirdVC = AnimalsView()
+        thirdVC.selectedAnimal = selectedAnimal
+       
+        navigationController?.pushViewController(thirdVC, animated: true)
     }
 }
 

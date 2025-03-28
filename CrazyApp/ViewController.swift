@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // MARK: - UI Components
     private let mainLabel: UILabel = {
         let label = UILabel()
         label.text = "Enter 7377 password to get access to next view!"
@@ -41,6 +42,7 @@ class ViewController: UIViewController {
         setupUI()
     }
     
+    // MARK: - Constraints
     func setupUI() {
         view.addSubview(mainLabel)
         mainLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -63,9 +65,10 @@ class ViewController: UIViewController {
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
+    // MARK: - Button actions
     @objc private func buttonTapped() {
         if textField.text == "7377" {
-            navigationController?.pushViewController(SecondVC(), animated: true)
+            navigationController?.pushViewController(CategoriesView(), animated: true)
         } else {
             let alert = UIAlertController(title: "Error", message: "Incorrect password!!!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
