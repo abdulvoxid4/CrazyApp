@@ -26,6 +26,7 @@ class SecondVC: UIViewController {
     //MARK: - DataModel
     var animals: [Animal] = []
     
+    //MARK: - Lifecycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -40,6 +41,7 @@ class SecondVC: UIViewController {
         setupUIElements()
     }
     
+    // MARK: - Set up constraints
     func setupUIElements() {
         view.addSubview(mainLabel)
         mainLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -57,6 +59,7 @@ class SecondVC: UIViewController {
 
 }
 
+
 extension SecondVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         animals.count
@@ -72,7 +75,10 @@ extension SecondVC: UITableViewDelegate, UITableViewDataSource {
         return 70
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let thidVC = ThirdVC(selectedCategory: indexPath.description)
+        navigationController?.pushViewController(thidVC, animated: true)
+    }
 }
 
 
